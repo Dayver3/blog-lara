@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
@@ -18,21 +16,20 @@ class RegistrationController extends Controller
     public function registrationAction(RegistrationRequest $registrationRequest)
     {
         //User::registrationUser();
+        $re =
         $data = $registrationRequest->only(['login', 'nickname', 'email', 'phone_number', 'address']);
         $data['password'] = $registrationRequest->getPasswordHash();
-        $check = User::checkUser($data);
-        if ($check === "email") {
-            echo ' Введите другой email';
+        if (!User::checkUser($data)) {
+
+                User::create($data);
+                $user_id = User::getUserId($registrationRequest->only(['email']));
+                request()->session()->setId($user_id[0]->user_id);
+                return view('mainMenu');
+
+        }else{
+
+            echo 'Введите правильные данные';
             return view('registration');
-        } elseif ($check === "phone_number") {
-            echo ' Введите другой phone_number';
-            return view('registration');
-        } elseif ($check === "nickname") {
-            echo ' Введите другой nickname';
-            return view('registration');
-        } else {
-            User::create($data);
-            return view('mainMenu');
         }
     }
 }

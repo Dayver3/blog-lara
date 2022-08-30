@@ -17,6 +17,8 @@ class LoginController extends Controller
     public function loginAction(Request $request)
     {
         if (Auth::attempt($request->only(['email', 'password']))) {
+            $user_id=User::getUserId($request->only(['email']));
+            request()->session()->setId($user_id[0]->user_id);
             return view('mainMenu');
         } else {
             echo 'Введите правильный логин и пароль';

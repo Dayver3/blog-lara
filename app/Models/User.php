@@ -53,23 +53,16 @@ class User extends Authenticatable
 
     public static function checkUser($user)
     {
-        $result=null;
-        $result = DB::select('select * from users where nickname=:nickname or email=:email or phone_number=:phone_number ', ['nickname' => $user['nickname'], 'email' => $user['email'], 'phone_number' => $user['phone_number']]);
-        if ($result==true) {
-            if ($user['nickname'] === $result[0]->nickname) {
-                return 'nickname';
-            } elseif ($user['email'] === $result[0]->email) {
-                return 'email';
-            } elseif ($user['phone_number'] === $result[0]->phone_number) {
-                return 'phone_number';
-            } else {
-                return 1;
-            }
-        }
+        $exists = User::orWhere(['nickname' => $user['nickname'], 'email' => $user['email'], 'phone_number' => $user['phone_number']])->exists();
+        return $exists;
     }
 
-    public static function registrationUser()
+
+    public
+    static function getUserId($user)
     {
-
+        $result = DB::select('select user_id from users where  email=:email  ', ['email' => $user['email']]);
+        return $result;
     }
+
 }
