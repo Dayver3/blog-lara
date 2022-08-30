@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Barryvdh\LaravelIdeHelper\Eloquent;
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,21 +51,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function setLogin()
+    public static function checkUser($user)
     {
-        $login = $_POST['login'];
-
+        $exists = User::orWhere(['nickname' => $user['nickname'], 'email' => $user['email'], 'phone_number' => $user['phone_number']])->exists();
+        return $exists;
     }
 
-    public static function registrationUser()
+
+    public
+    static function getUserId($user)
     {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $nickname = $_POST['nickname'];
-        $email = $_POST['email'];
-        $address = $_POST['address'];
-        $phone_number = $_POST['phone_number'];
-        DB::insert("insert into users(login,nickname,password,email,address,phone_number) values ('$login','$nickname','$password','$email','$address','$phone_number'");
-        return view('mainPage');
+        $result = DB::select('select user_id from users where  email=:email  ', ['email' => $user['email']]);
+        return $result;
     }
+
 }

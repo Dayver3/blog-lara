@@ -1,6 +1,7 @@
-<form action="/login/login" method="post">
+<form action="/login" method="post">
+    @csrf
     Логин:<br/>
-    <input type="text" name="login"/><br/>
+    <input type="text" name="email"/><br/>
     Пароль:<br/>
     <input type="text" name="password"/><br/>
     <button type="submit">

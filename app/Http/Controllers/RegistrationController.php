@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
@@ -12,10 +13,23 @@ class RegistrationController extends Controller
         return view('registration');
     }
 
-    public function registrationAction(Request $request)
+    public function registrationAction(RegistrationRequest $registrationRequest)
     {
         //User::registrationUser();
-        User::create($request->only(['login','nickname', 'email','phone_number','address','password']));
-        return view('mainMenu');
+        $re =
+        $data = $registrationRequest->only(['login', 'nickname', 'email', 'phone_number', 'address']);
+        $data['password'] = $registrationRequest->getPasswordHash();
+        if (!User::checkUser($data)) {
+
+                User::create($data);
+                $user_id = User::getUserId($registrationRequest->only(['email']));
+                request()->session()->setId($user_id[0]->user_id);
+                return view('mainMenu');
+
+        }else{
+
+            echo 'Введите правильные данные';
+            return view('registration');
+        }
     }
 }

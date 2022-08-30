@@ -7,6 +7,6 @@ class HomePageController extends Controller
 {
     public function indexAction()
     {
-        return view('mainMenu');
+        return view('homePage');
     }
 }
