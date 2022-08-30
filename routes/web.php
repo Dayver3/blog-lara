@@ -22,9 +22,10 @@ use App\Http\Controllers\HomePageController;
 Route::get('/', function () {
     return view ('mainMenu');
 });
-Route::get('/login',[LoginController::class,'indexAction'])->name('login');
+Route::get('/login',[LoginController::class,'indexAction'])->name('loginPage');
 Route::get('/registration',[RegistrationController::class,'indexAction'])->name('registrationPage');
 Route::post('/registration',[RegistrationController::class,'registrationAction'])->name('registration');
 Route::get('/userPage',[UserPageController::class,'indexAction'])->name('userPage');
 Route::get('/mainMenu',[MainPageController::class,'indexAction'])->name('mainMenu');
 Route::get('/homePage',[HomePageController::class,'indexAction'])->name('homePage');
+Route::post('/login',[LoginController::class,'loginAction'])->name('login');

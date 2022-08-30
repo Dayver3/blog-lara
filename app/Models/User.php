@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Barryvdh\LaravelIdeHelper\Eloquent;
+use http\Env\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,21 +51,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function setLogin()
+    public static function checkUser($user)
     {
-        $login = $_POST['login'];
-
+        $result=null;
+        $result = DB::select('select * from users where nickname=:nickname or email=:email or phone_number=:phone_number ', ['nickname' => $user['nickname'], 'email' => $user['email'], 'phone_number' => $user['phone_number']]);
+        if ($result==true) {
+            if ($user['nickname'] === $result[0]->nickname) {
+                return 'nickname';
+            } elseif ($user['email'] === $result[0]->email) {
+                return 'email';
+            } elseif ($user['phone_number'] === $result[0]->phone_number) {
+                return 'phone_number';
+            } else {
+                return 1;
+            }
+        }
     }
 
     public static function registrationUser()
     {
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $nickname = $_POST['nickname'];
-        $email = $_POST['email'];
-        $address = $_POST['address'];
-        $phone_number = $_POST['phone_number'];
-        DB::insert("insert into users(login,nickname,password,email,address,phone_number) values ('$login','$nickname','$password','$email','$address','$phone_number'");
-        return view('mainPage');
+
     }
 }
