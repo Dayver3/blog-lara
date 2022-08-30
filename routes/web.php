@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\HomePageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +20,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view ('mainMenu');
 });
+Route::get('/login',[LoginController::class,'indexAction'])->name('login');
+Route::get('/registration',[RegistrationController::class,'indexAction'])->name('registrationPage');
+Route::post('/registration',[RegistrationController::class,'registrationAction'])->name('registration');
+Route::get('/userPage',[UserPageController::class,'indexAction'])->name('userPage');
+Route::get('/mainMenu',[MainPageController::class,'indexAction'])->name('mainMenu');
+Route::get('/homePage',[HomePageController::class,'indexAction'])->name('homePage');
