@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
@@ -30,3 +31,5 @@ Route::get('/mainMenu',[MainPageController::class,'indexAction'])->name('mainMen
 Route::get('/homePage',[HomePageController::class,'indexAction'])->name('homePage');
 Route::post('/login',[LoginController::class,'loginAction'])->name('login');
 Route::post('/post',[PostController::class,'postAction'])->name('post');
+Route::get('/theme',[ThemeController::class,'indexAction'])->name('theme');
+
