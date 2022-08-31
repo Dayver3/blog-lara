@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class PostController extends Controller
@@ -20,8 +21,11 @@ class PostController extends Controller
     public function postAction(Request $request)
     {
         var_dump($data = $request->only(['postTitle', 'postText']));
-        $ID = $request->session()->getId();
-        var_dump($ID);
+        $data = $request->only(['postTitle', 'postText']);
+        $data['user_id'] = session('user_id');
+        var_dump(session('user_id'));
+        Post::create($data);
+        var_dump(session()->all());
         return view('mainMenu');
     }
 }
