@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone_number')->default(0);
             $table->string('address')->default(0);
             $table->string('password');
+            $table->string('access')->default(0);
             $table->timestamps();
         });
     }

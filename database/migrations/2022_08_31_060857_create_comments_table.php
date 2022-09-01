@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('comment_id')->unique();
-            $table->string('user_id')->default(0);
+            $table->string('user_id');
+            $table->string('post_id');
             $table->string('commentText');
-            $table->string('parents_com_id');
+            $table->string('parents_com_id')->default(0);
             $table->timestamps();
         });
     }

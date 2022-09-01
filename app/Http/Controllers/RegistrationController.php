@@ -17,14 +17,17 @@ class RegistrationController extends Controller
     {
         //User::registrationUser();
         $re =
-        $data = $registrationRequest->only(['login', 'nickname', 'email', 'phone_number', 'address']);
+        $data = $registrationRequest->only([ 'nickname', 'email', 'phone_number', 'address','access']);
         $data['password'] = $registrationRequest->getPasswordHash();
         if (!User::checkUser($data)) {
 
                 User::create($data);
                 $user_id = User::getUserId($registrationRequest->only(['email']));
-                request()->session()->setId($user_id[0]->user_id);
-                return view('mainMenu');
+                request()->session()->put('user_id',$user_id[0]->user_id);
+//            if(User::userAccess($registrationRequest->only('email'))) {
+//                Auth::guard('admin');
+//            }
+                return view('homePage');
 
         }else{
 

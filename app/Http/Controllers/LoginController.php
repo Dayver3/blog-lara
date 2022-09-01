@@ -18,9 +18,10 @@ class LoginController extends Controller
     {
         if (Auth::attempt($request->only(['email', 'password']))) {
             $user_id=User::getUserId($request->only(['email']));
-            //request()->session()->set($user_id[0]->user_id);
             $request->session()->put('user_id',$user_id[0]->user_id,);
-            var_dump(session()->all());
+//            if(User::userAccess($request->only('email'))) {
+//                Auth::guard('admin')->login($user);
+//            }
             return view('mainMenu');
         } else {
             echo 'Введите правильный логин и пароль';

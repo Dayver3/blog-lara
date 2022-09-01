@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class MainPageController extends Controller
 {
     public function indexAction()
     {
-        $datum=Post::getPostData();
-        var_dump($datum);
-       // return view('mainMenu');
-       return view('mainPage',compact('datum'))->render();
+        if (!Auth::check()) {
+            $datum = Post::getPostData();
+
+            return view('mainPage', compact('datum'))->render();
+        } else {
+            echo'plz login';
+            return view('login');
+        }
     }
 }

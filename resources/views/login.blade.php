@@ -1,3 +1,4 @@
+@include('mainMenu')
 <form action="/login" method="post">
     @csrf
     Логин:<br/>

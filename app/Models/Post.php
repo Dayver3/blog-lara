@@ -18,8 +18,8 @@ public static function getPostData(){
     return $datum;
 }
 public static function getPostById($post_id){
-    $data=DB::table('posts')->select('postText','postTitle','created_at','post_id')->where('post_id',$post_id)->get();
-    return $data;
+    $datum=DB::table('posts')->select('postText','postTitle','created_at','post_id')->where('post_id',$post_id)->get();
+    return $datum;
 }
 
 }
