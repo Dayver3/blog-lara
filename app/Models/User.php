@@ -23,13 +23,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guard ='admin';
     protected $fillable = [
-        'login',
         'nickname',
         'email',
         'phone_number',
         'address',
-        'password'
+        'password',
+        'access',
     ];
 
     /**
@@ -58,10 +59,15 @@ class User extends Authenticatable
     }
 
 
-    public
-    static function getUserId($user)
+    public static function getUserId($user)
     {
         $result = DB::select('select user_id from users where  email=:email  ', ['email' => $user['email']]);
+        return $result;
+    }
+
+    public static function userAccess($data)
+    {
+        $result = DB::table('users')->select('access')->where('email', $data['email'])->get();
         return $result;
     }
 

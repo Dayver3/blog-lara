@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,7 @@ Route::get('/homePage',[HomePageController::class,'indexAction'])->name('homePag
 Route::post('/login',[LoginController::class,'loginAction'])->name('login');
 Route::post('/post',[PostController::class,'postAction'])->name('post');
 Route::get('/theme',[ThemeController::class,'indexAction'])->name('theme');
+Route::get('/comment',[CommentController::class,'indexAction'])->name('commentPage');
+Route::post('/comment',[CommentController::class,'commentAction'])->name('comment');
+Route::post('/comment',[CommentController::class,'commentAction'])->name('commentComment');
 

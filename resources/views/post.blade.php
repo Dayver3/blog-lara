@@ -1,3 +1,4 @@
+@include('mainMenu')
 <form action="/post" method="post">
     @csrf
     Тема:<br/>
