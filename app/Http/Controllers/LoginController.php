@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
     public function indexAction()
     {
         return view('login');
@@ -17,16 +22,27 @@ class LoginController extends Controller
     public function loginAction(Request $request)
     {
         if (Auth::attempt($request->only(['email', 'password']))) {
-            $user_id=User::getUserId($request->only(['email']));
-            $request->session()->put('user_id',$user_id[0]->user_id,);
+            $user_id = User::getUserId($request->only(['email']));
+            $request->session()->put('user_id', $user_id[0]->user_id,);
 //            if(User::userAccess($request->only('email'))) {
-//                Auth::guard('admin')->login($user);
+//                Auth::guard('user');
+//                echo ' 4545454';
 //            }
+            if (Auth::guard('web')) {
+                echo ' 4545454';
+            }
             return view('mainMenu');
         } else {
+            if (auth()->user()->is_admin == 1) {
+                return redirect()->route('admin.home');
+            }
             echo 'Введите правильный логин и пароль';
             return view('login');
         }
 
     }
+
+
+
+
 }

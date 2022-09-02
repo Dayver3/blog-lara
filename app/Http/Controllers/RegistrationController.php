@@ -19,6 +19,7 @@ class RegistrationController extends Controller
         $re =
         $data = $registrationRequest->only([ 'nickname', 'email', 'phone_number', 'address','access']);
         $data['password'] = $registrationRequest->getPasswordHash();
+        $data['is_admin']=1;
         if (!User::checkUser($data)) {
 
                 User::create($data);

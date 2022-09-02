@@ -11,6 +11,7 @@ class HomePageController extends Controller
     public function indexAction()
     {
         if (!Auth::check()) {
+
             return view('homePage');
 
         } else {
