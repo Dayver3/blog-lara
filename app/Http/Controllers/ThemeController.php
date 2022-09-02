@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ThemeController extends Controller
 {
@@ -21,10 +22,11 @@ class ThemeController extends Controller
             $comDatum = Comment::$finalArr;
             //var_dump($comDatum);
             //return view('theme')->with('datum','commentDatum');
+
             return view('theme', ['datum' => $datum, 'comDatum' => $comDatum])->render();
             //var_dump(['datum' => $datum]);
-        }else{
-            echo'Пожалуйста залогинтесь';
+        } else {
+            echo 'Пожалуйста залогинтесь';
             return view('login');
         }
     }

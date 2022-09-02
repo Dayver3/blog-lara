@@ -23,14 +23,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guard ='admin';
     protected $fillable = [
         'nickname',
         'email',
         'phone_number',
         'address',
         'password',
-        'access',
+        'is_admin',
     ];
 
     /**
