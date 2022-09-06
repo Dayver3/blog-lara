@@ -8,11 +8,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ *
+ */
 class ThemeController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string
+     */
     public function indexAction(Request $request)
     {
-        var_dump($request->session());
         if (!Auth::check()) {
             $post_id = $request->only(['id']);
             $comDatum = Comment::getComments($post_id);

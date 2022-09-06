@@ -5,11 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
+/**
+ *
+ */
 class Comment extends Model
 {
+    /**
+     * @var
+     */
     static public $datum;
+    /**
+     * @var array
+     */
     static public $finalArr=[];
 
+    /**
+     * @var string[]
+     */
     protected $fillable = [
         'comment_id ',
         'user_id',
@@ -17,10 +29,20 @@ class Comment extends Model
         'commentText',
         'parents_com_id'
     ];
-public static function getComments($post_id){
+
+    /**
+     * @param $post_id
+     * @return \Illuminate\Support\Collection
+     */
+    public static function getComments($post_id){
     $data=DB::table('comments')->select('comment_id','post_id','parents_com_id','commentText','created_at')->where('post_id',$post_id)->get();
 return $data;
 }
+
+    /**
+     * @param $post_id
+     * @return array
+     */
     static function getCommentArray($post_id)
     {
         $post_id = $_GET['id'];
@@ -32,6 +54,12 @@ return $data;
         return $data;
 
     }
+
+    /**
+     * @param $parents_id
+     * @param $level
+     * @return array
+     */
     static function getComment($parents_id, $level)
     {
         //var_dump(self::$datum[$parents_id]);

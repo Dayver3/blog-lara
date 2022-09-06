@@ -3,8 +3,8 @@
     <ul class="list">
         <li class="first "><a href="/adminMainPage">Главная</a></li>
         <li><a href="/adminLogin">Логин</a></li>
-        <li><a href="/homePage">Домашняя страница</a></li>
-        <li><a href="/post">Cтраница юзера</a></li>
-        <li class="last"><a href="/registration">Регистрация</a></li>
+        <li><a href="/adminPost">Добавить пост</a></li>
+        <li><a href="/mainMenu">simple user menu</a></li>
+        <li class="last"><a href="/adminRegistration">Регистрация</a></li>
     </ul>
 </div>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\admin\adminLoginController;
 use App\Http\Controllers\admin\adminMainPageController;
+use App\Http\Controllers\admin\adminPostController;
+use App\Http\Controllers\admin\adminRegistrationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThemeController;
@@ -48,3 +50,7 @@ Route::post('/comment',[CommentController::class,'commentAction'])->name('commen
 Route::get('/adminLogin',[adminLoginController::class,'indexAdminAction'])->name('adminLoginPage');
 Route::post('/adminLogin',[adminLoginController::class,'adminLoginAction'])->name('adminLogin');
 Route::get('/adminMainPage',[adminMainPageController::class,'indexAction'])->name('adminMainPage');
+Route::get('/adminRegistration',[adminRegistrationController::class,'registrationAction'])->name('adminRegistrationPage');
+Route::post('/adminRegistration',[adminRegistrationController::class,'registrAction'])->name('adminRegistration');
+Route::get('/adminPost',[adminPostController::class,'indexAction'])->name('adminPostPage');
+Route::post('/adminPost',[adminPostController::class,'postAction'])->name('adminPost');

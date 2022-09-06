@@ -6,19 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ *
+ */
 class LoginController extends Controller
 {
+    /**
+     *
+     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function indexAction()
     {
         return view('login');
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
     public function loginAction(Request $request)
     {
         if (Auth::attempt($request->only(['email', 'password']))) {

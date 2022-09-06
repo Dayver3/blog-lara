@@ -6,24 +6,20 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+/**
+ *
+ */
 class adminMainPageController
 {
+    /**
+     * @param Request $request
+     * @return string
+     */
     public function indexAction(Request $request)
     {
         var_dump($request->all());
-        if(Auth::guard('admin')){
-            echo'your adm';
-            return view('adminMainMenu');
-        }
-        echo'your not adm';
-        return view('adminMainMenu');
-        if (Auth::check()) {
-            $datum = Post::getPostData();
-var_dump($datum);
-            return view('mainPage', compact('datum'))->render();
-        } else {
-            echo'plz login';
-            return view('login');
-        }
+        $datum = Post::getPostData();
+        return view('adminMainPage', ['datum' => $datum])->render();
+
     }
 }
