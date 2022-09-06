@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 /**
  *
  */
-class adminMainPageController
+class adminMainPageController extends Controller
 {
     /**
      * @param Request $request
@@ -17,9 +18,15 @@ class adminMainPageController
      */
     public function indexAction(Request $request)
     {
-        var_dump($request->all());
         $datum = Post::getPostData();
         return view('adminMainPage', ['datum' => $datum])->render();
 
+    }
+    public function deleteAction(Request $request)
+    {
+        var_dump($request->only('post_id'));
+        $post_id = $request->only('post_id');
+        Post::deletePost($post_id);
+        return view('adminMainMenu');
     }
 }

@@ -42,13 +42,9 @@ class LoginController extends Controller
 //                echo ' 4545454';
 //            }
             if (Auth::guard('web')) {
-                echo ' 4545454';
             }
             return view('mainMenu');
         } else {
-            if (auth()->user()->is_admin == 1) {
-                return redirect()->route('admin.home');
-            }
             echo 'Введите правильный логин и пароль';
             return view('login');
         }

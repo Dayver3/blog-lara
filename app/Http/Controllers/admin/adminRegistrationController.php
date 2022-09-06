@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 
 /**
  *
  */
-class adminRegistrationController
+class adminRegistrationController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
