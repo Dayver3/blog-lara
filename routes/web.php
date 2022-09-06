@@ -4,6 +4,8 @@ use App\Http\Controllers\admin\adminLoginController;
 use App\Http\Controllers\admin\adminMainPageController;
 use App\Http\Controllers\admin\adminPostController;
 use App\Http\Controllers\admin\adminRegistrationController;
+use App\Http\Controllers\admin\adminThemeController;
+use App\Http\Controllers\admin\CommentChangeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ThemeController;
@@ -54,3 +56,8 @@ Route::get('/adminRegistration',[adminRegistrationController::class,'registratio
 Route::post('/adminRegistration',[adminRegistrationController::class,'registrAction'])->name('adminRegistration');
 Route::get('/adminPost',[adminPostController::class,'indexAction'])->name('adminPostPage');
 Route::post('/adminPost',[adminPostController::class,'postAction'])->name('adminPost');
+Route::get('/adminTheme',[adminThemeController::class,'indexAction'])->name('adminTheme');
+Route::post('/adminMainPage',[adminMainPageController::class,'deleteAction'])->name('adminThemeDelete');
+Route::get('/change',[CommentChangeController::class,'indexAction'])->name('change');
+Route::post('/change',[CommentChangeController::class,'commentChangeAction'])->name('commentChange');
+

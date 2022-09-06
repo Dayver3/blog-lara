@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  *
  */
-class adminLoginController
+class adminLoginController extends Controller
 {
     /**
      * @param Request $request
@@ -24,7 +25,7 @@ class adminLoginController
             return view('adminMainMenu');
         } else {
             echo 'non-admin';
-            return view('adminLogin');
+            return view('login');
         }
     }
 

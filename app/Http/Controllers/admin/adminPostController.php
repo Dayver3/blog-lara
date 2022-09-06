@@ -41,4 +41,5 @@ class adminPostController extends Controller
         return view('adminMainMenu');
 
     }
+
 }

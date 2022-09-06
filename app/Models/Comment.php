@@ -17,7 +17,7 @@ class Comment extends Model
     /**
      * @var array
      */
-    static public $finalArr=[];
+    static public $finalArr = [];
 
     /**
      * @var string[]
@@ -34,10 +34,11 @@ class Comment extends Model
      * @param $post_id
      * @return \Illuminate\Support\Collection
      */
-    public static function getComments($post_id){
-    $data=DB::table('comments')->select('comment_id','post_id','parents_com_id','commentText','created_at')->where('post_id',$post_id)->get();
-return $data;
-}
+    public static function getComments($post_id)
+    {
+        $data = DB::table('comments')->select('comment_id', 'post_id', 'parents_com_id', 'commentText', 'created_at')->where('post_id', $post_id)->get();
+        return $data;
+    }
 
     /**
      * @param $post_id
@@ -46,7 +47,7 @@ return $data;
     static function getCommentArray($post_id)
     {
         $post_id = $_GET['id'];
-        $datum = DB::table('comments')->where('post_id',$post_id)->get();
+        $datum = DB::table('comments')->where('post_id', $post_id)->get();
         $data = [];
         foreach ($datum as $value) {
             $data[$value->parents_com_id][] = $value;
@@ -74,5 +75,12 @@ return $data;
 
             }
         return self::$finalArr;
+    }
+
+    static function updateComment($data)
+    {
+
+        DB::table('comments')->where('comment_id', $data['comment_id'])->update($data);
+        return 1;
     }
 }
