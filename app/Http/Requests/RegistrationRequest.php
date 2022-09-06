@@ -5,6 +5,9 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ *
+ */
 class RegistrationRequest extends FormRequest
 {
     /*
@@ -22,6 +25,9 @@ class RegistrationRequest extends FormRequest
     *
     * @return array
     */
+    /**
+     * @return string[]
+     */
     public function rules(): array
     {
         return [

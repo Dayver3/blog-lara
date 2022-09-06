@@ -5,8 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
+/**
+ *
+ */
 class CommentController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function indexAction(Request $request)
     {
 
@@ -21,6 +28,10 @@ class CommentController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function commentAction(Request $request)
     {
         $data = $request->only(['commentText', 'post_id', 'parents_com_id']);
@@ -28,6 +39,11 @@ class CommentController extends Controller
         Comment::create($data);
         return view('mainMenu');
     }
+
+    /**
+     * @param Request $request
+     * @return void
+     */
     public function reFactorAction(Request $request){
 
     }

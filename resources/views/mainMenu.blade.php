@@ -5,6 +5,7 @@
         <li><a href="/login">Логин</a></li>
         <li><a href="/homePage">Домашняя страница</a></li>
         <li><a href="/post">Cтраница юзера</a></li>
-        <li class="last"><a href="/registration">Регистрация</a></li>
+        <li><a href="/registration">Регистрация</a></li>
+        <li class="last"><a href="/adminLogin">админка</a></li>
     </ul>
 </div>
