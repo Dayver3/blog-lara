@@ -60,4 +60,5 @@ Route::get('/adminTheme',[adminThemeController::class,'indexAction'])->name('adm
 Route::post('/adminMainPage',[adminMainPageController::class,'deleteAction'])->name('adminThemeDelete');
 Route::get('/change',[CommentChangeController::class,'indexAction'])->name('change');
 Route::post('/change',[CommentChangeController::class,'commentChangeAction'])->name('commentChange');
+Route::post('/delete/comment',[CommentChangeController::class,'commentDeleteAction'])->name('commentDelete');
 

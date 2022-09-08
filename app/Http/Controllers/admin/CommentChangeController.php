@@ -29,4 +29,11 @@ class CommentChangeController extends Controller
         Comment::updateComment($data);
         return view('adminMainMenu');
     }
+    public function commentDeleteAction(Request $request)
+    {
+        //dd(1);
+        $data = $request->only(['comment_id']);
+        Comment::deleteComment($data);
+        return \Response::redirectTo('/mainMenu');
+    }
 }
