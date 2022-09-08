@@ -83,4 +83,10 @@ class Comment extends Model
         DB::table('comments')->where('comment_id', $data['comment_id'])->update($data);
         return 1;
     }
+    static function deleteComment($data)
+    {
+        DB::table('comments')->where('comment_id', $data['comment_id'])->delete();
+        return 1;
+    }
+
 }

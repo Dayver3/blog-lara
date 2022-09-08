@@ -15,8 +15,15 @@
         <div style='margin-left: {{$comData->level*25}}px'> {{$comData->commentText}}<br>{{$comData->created_at}}</div>
         @csrf
         <label>
-            <form action='/change/?comment_id={{$comData->comment_id}}' method='post'>
+            <form action='/change?comment_id={{$comData->comment_id}}' method='post'>
+                @csrf
                 <button type='submit'>изменить</button>
+            </form>
+        </label>
+        <label>
+            <form action='/delete/comment?comment_id={{$comData->comment_id}}' method='post' name="fuckme">
+                @csrf
+                <button type='submit'>удалить</button>
             </form>
         </label>
     <label>
