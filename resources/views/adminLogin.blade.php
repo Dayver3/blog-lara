@@ -1,5 +1,7 @@
 @include('mainMenu')
+
 <form action="/adminLogin" method="post">
+
     @csrf
     Логин:<br/>
     <input type="text" name="email"/><br/>
