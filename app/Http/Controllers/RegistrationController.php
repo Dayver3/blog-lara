@@ -42,7 +42,7 @@ class RegistrationController extends Controller
 
         }else{
 
-            echo 'Введите правильные данные';
+            echo 'plz use correct info';
             return view('registration');
         }
     }
