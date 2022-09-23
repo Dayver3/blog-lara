@@ -45,7 +45,7 @@ class LoginController extends Controller
             }
             return view('mainMenu');
         } else {
-            echo 'Введите правильный логин и пароль';
+            echo 'plz login';
             return view('login');
         }
 
