@@ -20,7 +20,8 @@ class HomePageController extends Controller
         if (!Auth::check()) {
             return view('homePage');
 
-        } else {
+        } else 
+        {
             echo 'plz login';
             return view('login');
         }
