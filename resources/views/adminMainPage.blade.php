@@ -4,7 +4,6 @@
         <li class='menuItem'>
             <a href='/adminTheme?id={{$data->post_id}}'>
                 {{$data->postTitle}}
-
             </a>
         </li>
     @endforeach
