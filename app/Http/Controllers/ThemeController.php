@@ -31,7 +31,8 @@ class ThemeController extends Controller
 
             return view('theme', ['datum' => $datum, 'comDatum' => $comDatum])->render();
             //var_dump(['datum' => $datum]);
-        } else {
+        } else 
+        {
             echo 'Пожалуйста залогинтесь';
             return view('login');
         }
