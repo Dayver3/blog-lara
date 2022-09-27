@@ -17,15 +17,16 @@ class HomePageController extends Controller
      */
     public function indexAction()
     {
-        if (!Auth::check()) {
+        if (!Auth::check()) 
+        {
             return view('homePage');
 
         } 
-        else 
-        {
+            else 
+            {
             echo 'plz login';
             return view('login');
-        }
+            }
 
     }
 }
