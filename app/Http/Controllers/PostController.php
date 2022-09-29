@@ -20,7 +20,8 @@ class PostController extends Controller
     {
         if (!Auth::check()) {
             return view('post');
-        } else 
+        } 
+        else 
         {
             echo 'plz login';
             return view('login');
