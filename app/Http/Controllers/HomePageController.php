@@ -24,6 +24,7 @@ class HomePageController extends Controller
         } 
             else 
             {
+                
             echo 'plz login';
             return view('login');
             }
