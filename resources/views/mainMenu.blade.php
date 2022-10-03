@@ -1,5 +1,6 @@
 <div class="side-box">
     <h3>Основное меню</h3>
+    
     <ul class="list">
         <li class="first "><a href="/mainMenu">Главная</a></li>
         <li><a href="/login">Логин</a></li>
