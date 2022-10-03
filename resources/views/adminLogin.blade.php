@@ -1,5 +1,4 @@
 @include('mainMenu')
-
 <form action="/adminLogin" method="post">
 
     @csrf
