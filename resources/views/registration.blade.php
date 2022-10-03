@@ -1,4 +1,5 @@
 @include('mainMenu')
+
 <form action="/registration" method="post">
     @csrf
     E-mail:<br/>
