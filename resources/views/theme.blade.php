@@ -1,4 +1,5 @@
 @include('mainMenu')
+
 <ul id='menu'>
     @csrf
     Тема:
