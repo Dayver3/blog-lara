@@ -44,7 +44,8 @@ class LoginController extends Controller
             if (Auth::guard('web')) {
             }
             return view('mainMenu');
-        } else {
+        } else 
+        {
             echo 'plz login';
             return view('login');
         }
