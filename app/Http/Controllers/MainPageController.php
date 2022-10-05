@@ -21,6 +21,7 @@ class MainPageController extends Controller
             return view('mainPage', compact('datum'))->render();
         } else 
         {
+            
             echo'plz login';
             return view('login');
         }
