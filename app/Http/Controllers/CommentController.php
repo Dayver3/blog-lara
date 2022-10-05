@@ -17,7 +17,8 @@ class CommentController extends Controller
     public function indexAction(Request $request)
     {
         $data['parents_com_id'] = 0;
-        if(key_exists('parents_com_id',$request->all())){
+        if(key_exists('parents_com_id',$request->all()))
+        {
             $data = $request->only(['post_id', 'parents_com_id']);
         }
         else
