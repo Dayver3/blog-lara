@@ -22,8 +22,7 @@ class PostController extends Controller
             return view('post');
         } 
         else 
-        {
-            
+        {  
             echo 'plz login';
             return view('login');
         }
