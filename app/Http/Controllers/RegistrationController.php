@@ -40,8 +40,8 @@ class RegistrationController extends Controller
 //            }
                 return view('homePage');
 
-        }else{
-
+        }else
+        {
             echo 'plz use correct info';
             return view('registration');
         }
