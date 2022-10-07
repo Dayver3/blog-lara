@@ -18,11 +18,13 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        if (!Auth::check()) {
+        if (!Auth::check()) 
+        {
             return view('post');
         } 
         else 
         {  
+            
             echo 'plz login';
             return view('login');
         }
