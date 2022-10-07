@@ -19,9 +19,7 @@ class MainPageController extends Controller
             $datum = Post::getPostData();
 
             return view('mainPage', compact('datum'))->render();
-        } else 
-        {
-            
+        } else {
             echo'plz login';
             return view('login');
         }
