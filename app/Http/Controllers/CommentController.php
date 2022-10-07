@@ -23,6 +23,7 @@ class CommentController extends Controller
         }
         else
         {
+            
             $data = $request->only(['post_id']);
             $data['parents_com_id']=0;
         }
@@ -36,6 +37,7 @@ class CommentController extends Controller
      */
     public function commentAction(Request $request)
     {
+        
         $data = $request->only(['commentText', 'post_id', 'parents_com_id']);
         $data['user_id'] = session('user_id');
         Comment::create($data);
