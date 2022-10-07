@@ -34,6 +34,8 @@ class ThemeController extends Controller
         } 
         else 
         {
+            
+            
             echo 'Пожалуйста залогинтесь';
             return view('login');
         }
