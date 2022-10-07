@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         return view('home');
     }
 
@@ -36,6 +37,7 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
+        
         return view('mainMenu');
     }
 }
