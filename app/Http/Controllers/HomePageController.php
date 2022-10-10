@@ -21,9 +21,7 @@ class HomePageController extends Controller
         {
             return view('homePage');
 
-        } 
-            else 
-            {    
+        } else {    
             echo 'plz login';
             return view('login');
             }
