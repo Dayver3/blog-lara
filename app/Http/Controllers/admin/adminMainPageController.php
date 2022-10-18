@@ -24,7 +24,6 @@ class adminMainPageController extends Controller
     }
     public function deleteAction(Request $request)
     {
-        var_dump($request->only('post_id'));
         $post_id = $request->only('post_id');
         Post::deletePost($post_id);
         return view('adminMainMenu');
