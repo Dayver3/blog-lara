@@ -31,7 +31,6 @@ class CommentChangeController extends Controller
     }
     public function commentDeleteAction(Request $request)
     {
-        //dd(1);
         $data = $request->only(['comment_id']);
         Comment::deleteComment($data);
         return \Response::redirectTo('/mainMenu');
