@@ -34,7 +34,6 @@ class adminPostController extends Controller
      */
     public function postAction(Request $request)
     {
-
         $data = $request->only(['postTitle', 'postText']);
         $data['user_id'] = session('user_id');
         Post::create($data);
