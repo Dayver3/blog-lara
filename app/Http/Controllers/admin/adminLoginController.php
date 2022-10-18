@@ -21,7 +21,6 @@ class adminLoginController extends Controller
         if (Auth::guard('admin')->attempt($request->only(['email', 'password']))) {
             $user_id = User::getUserId($request->only(['email']));
             $request->session()->put('user_id', $user_id[0]->user_id,);
-            //$user = auth()->guard('admin')->user();
             return view('adminMainMenu');
         } else {
             echo 'non-admin';
