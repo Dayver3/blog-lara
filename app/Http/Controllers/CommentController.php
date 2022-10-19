@@ -23,6 +23,7 @@ class CommentController extends Controller
         }
         else
         {
+            
             $data = $request->only(['post_id']);
             $data['parents_com_id']=0;
         }
