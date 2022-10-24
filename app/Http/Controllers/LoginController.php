@@ -37,10 +37,6 @@ class LoginController extends Controller
         if (Auth::attempt($request->only(['email', 'password']))) {
             $user_id = User::getUserId($request->only(['email']));
             $request->session()->put('user_id', $user_id[0]->user_id,);
-//            if(User::userAccess($request->only('email'))) {
-//                Auth::guard('user');
-//                echo ' 4545454';
-//            }
             if (Auth::guard('web')) {
             }
             return view('mainMenu');
