@@ -35,9 +35,6 @@ class RegistrationController extends Controller
                 User::create($data);
                 $user_id = User::getUserId($registrationRequest->only(['email']));
                 request()->session()->put('user_id',$user_id[0]->user_id);
-//            if(User::userAccess($registrationRequest->only('email'))) {
-//                Auth::guard('admin');
-//            }
                 return view('homePage');
 
         }else{
