@@ -26,9 +26,6 @@ class ThemeController extends Controller
             Comment::$datum = Comment::getCommentArray($post_id);
             Comment::getComment(0, 0);
             $comDatum = Comment::$finalArr;
-            //var_dump($comDatum);
-            //return view('theme')->with('datum','commentDatum');
-
             return view('theme', ['datum' => $datum, 'comDatum' => $comDatum])->render();
             //var_dump(['datum' => $datum]);
         } 
